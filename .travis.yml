@@ -1,0 +1,6 @@
+language: csharp
+sudo: false
+
+script: 
+  - ./build.sh --target "Travis"
+    
