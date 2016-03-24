@@ -15,4 +15,5 @@ TestResults
 
 packages
 
-tools/Cake
+tools
+!tools/packages.config
