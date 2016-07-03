@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Debug");
+var configuration = Argument("configuration", "Release");
 
 //////////////////////////////////////////////////////////////////////
 // DISCOVERY VARS
@@ -17,7 +17,8 @@ var PROJ_EXT = "*.csproj";
 // DEFINE RUN CONSTANTS
 //////////////////////////////////////////////////////////////////////
 
-var ROOT_DIR = Context.Environment.WorkingDirectory.FullPath + "/";
+var ROOT_DIR = Context.Environment.WorkingDirectory.FullPath;
+var NUNIT3_CONSOLE = ROOT_DIR + "/tools/NUnit.ConsoleRunner/tools/nunit3-console.exe";
 
 //////////////////////////////////////////////////////////////////////
 // ERROR LOG
@@ -75,23 +76,7 @@ Task("Build")
 
             try
             {
-                if (IsRunningOnWindows())
-                {
-                    // Use MSBuild
-                    MSBuild(proj, new MSBuildSettings()
-                        .SetConfiguration(configuration)
-                        .SetMSBuildPlatform(MSBuildPlatform.Automatic)
-                        .SetVerbosity(Verbosity.Minimal)
-                        .SetNodeReuse(false));
-                }
-                else
-                {
-                    // Use XBuild
-                    XBuild(proj, new XBuildSettings()
-                        .WithTarget("Build")
-                        .WithProperty("Configuration", configuration)
-                        .SetVerbosity(Verbosity.Minimal));
-	            }
+				BuildProject(proj, configuration);
             }
             catch(Exception ex)
             {
@@ -117,14 +102,17 @@ Task("Test")
 
             DisplayHeading("Testing " + sample + " sample");
 
-            try
-            {
-                NUnit3(dllName);
-            }
-            catch(CakeException ex)
-            {
-                ErrorDetail.Add("     * " + sample + " test failed.");
-            }
+            int rc = StartProcess(
+				NUNIT3_CONSOLE,
+				new ProcessSettings()
+				{
+					Arguments = dllName
+				});
+
+            if (rc > 0)
+                ErrorDetail.Add(string.Format("{0}: {1} tests failed", sample, rc));
+            else if (rc < 0)
+                ErrorDetail.Add(string.Format("{0} exited with rc = {1}", sample, rc));
         }
     });
 
@@ -152,6 +140,25 @@ void CheckForError(ref List<string> errorDetail)
 //////////////////////////////////////////////////////////////////////
 // HELPER METHODS
 //////////////////////////////////////////////////////////////////////
+
+void BuildProject(string projPath, string configuration)
+{
+    if (IsRunningOnWindows())
+    {
+        MSBuild(projPath, new MSBuildSettings()
+            .SetConfiguration(configuration)
+            .SetMSBuildPlatform(MSBuildPlatform.Automatic)
+            .SetVerbosity(Verbosity.Minimal)
+            .SetNodeReuse(false));
+    }
+    else
+    {
+        XBuild(projPath, new XBuildSettings()
+            .WithTarget("Build")
+            .WithProperty("Configuration", configuration)
+            .SetVerbosity(Verbosity.Minimal));
+    }
+}
 
 string DirFrom(string filePath)
 {
