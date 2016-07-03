@@ -14,3 +14,6 @@ TestResult.xml
 TestResults
 
 packages
+
+tools
+!tools/packages.config
