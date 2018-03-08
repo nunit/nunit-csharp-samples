@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace DataDrivenTests
 {
     [TestFixture(typeof(int))]
     [TestFixture(typeof(string))]
-    public class GenericTestClass<T>
+    public class GenericTestFixture<T>
     {
         [Test]
         public void TestType()
