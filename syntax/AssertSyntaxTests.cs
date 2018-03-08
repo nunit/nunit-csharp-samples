@@ -613,11 +613,11 @@ namespace NUnit.Framework.Tests
         #region Assumptions
 
         [Test]
-        public void PostiveAssumption()
+        public void PositiveAssumption()
         {
             Assume.That(true);
 
-            Assert.Pass("This will be hit because of the assumption.");
+            Assert.Pass("This will be executed because of the assumption.");
         }
 
         [Test]
@@ -625,7 +625,7 @@ namespace NUnit.Framework.Tests
         {
             Assume.That(false);
 
-            Assert.Fail("This will not be hit because of the assumption.");
+            Assert.Fail("This will not be executed because of the assumption.");
         }
 
         #endregion
@@ -633,7 +633,7 @@ namespace NUnit.Framework.Tests
         #region Warnings
 
         [Test]
-        public void PostiveWarning()
+        public void PositiveWarning()
         {
             Warn.If(true, "This will emit a warning");
             Warn.Unless(false, "This will emit a warning");

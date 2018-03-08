@@ -14,7 +14,7 @@ namespace DataDrivenTests
         }
 
         [Test]
-        public void TestArgurments()
+        public void TestArguments()
         {
             Assert.Pass($"X is {_x}");
         }
