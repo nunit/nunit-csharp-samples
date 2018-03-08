@@ -6,16 +6,16 @@ namespace NUnit.Framework.Tests
 {
     /// <summary>
     /// This test fixture attempts to exercise all the syntactic
-    /// variations of Assert without getting into failures, errors 
-    /// or corner cases. Thus, some of the tests may be duplicated 
+    /// variations of Assert without getting into failures, errors
+    /// or corner cases. Thus, some of the tests may be duplicated
     /// in other fixtures.
-    /// 
+    ///
     /// Each test performs the same operations using the classic
     /// syntax (if available) and the new syntax in both the
     /// helper-based and inherited forms.
-    /// 
+    ///
     /// This Fixture will eventually be duplicated in other
-    /// supported languages. 
+    /// supported languages.
     /// </summary>
     [TestFixture]
     public class AssertSyntaxTests : AssertionHelper
@@ -72,7 +72,7 @@ namespace NUnit.Framework.Tests
 
             // Constraint Syntax
             Assert.That(2+2== 5, Is.False);
-            
+
             // Inherited syntax
             Expect(2+2==5, False);
         }
@@ -90,7 +90,7 @@ namespace NUnit.Framework.Tests
             // Constraint Syntax
             Assert.That(d, Is.NaN);
             Assert.That(f, Is.NaN);
-            
+
             // Inherited syntax
             Expect(d, NaN);
             Expect(f, NaN);
@@ -142,7 +142,7 @@ namespace NUnit.Framework.Tests
             // Constraint Syntax
             Assert.That("Hello", Is.TypeOf(typeof(string)));
             Assert.That("Hello", Is.Not.TypeOf(typeof(int)));
-            
+
             // Inherited syntax
             Expect( "Hello", TypeOf(typeof(string)));
             Expect( "Hello", Not.TypeOf(typeof(int)));
@@ -174,7 +174,7 @@ namespace NUnit.Framework.Tests
             // Constraint Syntax
             Assert.That( "Hello", Is.AssignableFrom(typeof(string)));
             Assert.That( 5, Is.Not.AssignableFrom(typeof(string)));
-            
+
             // Inherited syntax
             Expect( "Hello", AssignableFrom(typeof(string)));
             Expect( 5, Not.AssignableFrom(typeof(string)));
@@ -187,10 +187,10 @@ namespace NUnit.Framework.Tests
         {
             string phrase = "Hello World!";
             string[] array = new string[] { "abc", "bad", "dba" };
-            
+
             // Classic Syntax
             StringAssert.Contains("World", phrase);
-            
+
             // Constraint Syntax
             Assert.That(phrase, Does.Contain("World"));
             // Only available using new syntax
@@ -249,7 +249,7 @@ namespace NUnit.Framework.Tests
             Assert.That(phrase, Does.Not.EndWith("?"));
             Assert.That(phrase, Does.EndWith("WORLD!").IgnoreCase);
             Assert.That(greetings, Is.All.EndsWith("!"));
-        
+
             // Inherited syntax
             Expect(phrase, EndsWith("!"));
             // Only available using new syntax
@@ -265,21 +265,21 @@ namespace NUnit.Framework.Tests
 
             // Classic syntax
             StringAssert.AreEqualIgnoringCase("hello world!",phrase);
-            
+
             // Constraint Syntax
             Assert.That(phrase, Is.EqualTo("hello world!").IgnoreCase);
             //Only available using new syntax
             Assert.That(phrase, Is.Not.EqualTo("goodbye world!").IgnoreCase);
-            Assert.That(new string[] { "Hello", "World" }, 
+            Assert.That(new string[] { "Hello", "World" },
                 Is.EqualTo(new object[] { "HELLO", "WORLD" }).IgnoreCase);
             Assert.That(new string[] {"HELLO", "Hello", "hello" },
                 Is.All.EqualTo( "hello" ).IgnoreCase);
-                    
+
             // Inherited syntax
             Expect(phrase, EqualTo("hello world!").IgnoreCase);
             //Only available using new syntax
             Expect(phrase, Not.EqualTo("goodbye world!").IgnoreCase);
-            Expect(new string[] { "Hello", "World" }, 
+            Expect(new string[] { "Hello", "World" },
                 EqualTo(new object[] { "HELLO", "WORLD" }).IgnoreCase);
             Expect(new string[] {"HELLO", "Hello", "hello" },
                 All.EqualTo( "hello" ).IgnoreCase);
@@ -302,7 +302,7 @@ namespace NUnit.Framework.Tests
             Assert.That(phrase, Does.Not.Match("all.*men.*good"));
             Assert.That(phrase, Does.Match("ALL").IgnoreCase);
             Assert.That(quotes, Is.All.Matches("never").IgnoreCase);
-        
+
             // Inherited syntax
             Expect( phrase, Matches( "all good men" ) );
             Expect( phrase, Matches( "Now.*come" ) );
@@ -333,7 +333,7 @@ namespace NUnit.Framework.Tests
             Assert.That(i3, Is.EqualTo(d3));
             Assert.That(2 + 2, Is.Not.EqualTo(5));
             Assert.That(i3, Is.Not.EqualTo(iunequal));
-        
+
             // Inherited syntax
             Expect(2 + 2, EqualTo(4));
             Expect(2 + 2 == 4);
@@ -358,7 +358,7 @@ namespace NUnit.Framework.Tests
             Assert.That(499, Is.EqualTo(500).Within(5));
             Assert.That(4999999999L, Is.EqualTo(5000000000L).Within(5L));
             Assert.That(5999999999ul, Is.EqualTo(6000000000ul).Within(5ul));
-        
+
             // Inherited syntax
             Expect(4.99d, EqualTo(5.0d).Within(0.05d));
             Expect(4.0d, Not.EqualTo(5.0d).Within(0.5d));
@@ -443,7 +443,7 @@ namespace NUnit.Framework.Tests
             Assert.That(3, Is.AtMost(7));
             Assert.That(3, Is.LessThanOrEqualTo(3));
             Assert.That(3, Is.AtMost(3));
-        
+
             // Inherited syntax
             Expect(3, LessThan(7));
             Expect(3, LessThanOrEqualTo(7));
@@ -486,7 +486,7 @@ namespace NUnit.Framework.Tests
             Assert.That( strings, Has.Some.Property( "Length" ).EqualTo( 3 ) );
             Assert.That( strings, Has.Some.StartsWith( "BA" ).IgnoreCase );
             Assert.That( doubles, Has.Some.EqualTo( 1.0 ).Within( .05 ) );
-        
+
             // Inherited syntax
             Expect(ints, All.Not.Null);
             Expect(ints, None.Null);
@@ -517,7 +517,7 @@ namespace NUnit.Framework.Tests
             Assert.That(mixed, Has.Some.InstanceOf(typeof(string)));
             Assert.That(strings, Has.Some.StartsWith( "ba" ) );
             Assert.That(strings, Has.Some.Not.StartsWith( "ba" ) );
-        
+
             // Inherited syntax
             Expect(mixed, Some.Null);
             Expect(mixed, Some.InstanceOf(typeof(int)));
@@ -539,7 +539,7 @@ namespace NUnit.Framework.Tests
             Assert.That(ints, Has.None.InstanceOf(typeof(string)));
             Assert.That(ints, Has.None.GreaterThan(99));
             Assert.That(strings, Has.None.StartsWith( "qu" ) );
-        
+
             // Inherited syntax
             Expect(ints, None.Null);
             Expect(ints, None.InstanceOf(typeof(string)));
@@ -571,7 +571,7 @@ namespace NUnit.Framework.Tests
 
             // Only available using the new syntax
             // Note that EqualTo and SameAs do NOT give
-            // identical results to Contains because 
+            // identical results to Contains because
             // Contains uses Object.Equals()
             Assert.That(iarray, Has.Some.EqualTo(3));
             Assert.That(iarray, Has.Member(3));
@@ -581,7 +581,7 @@ namespace NUnit.Framework.Tests
             Assert.That(iarray, Has.All.LessThan(10));
             Assert.That(sarray, Has.All.Length.EqualTo(1));
             Assert.That(sarray, Has.None.Property("Length").GreaterThan(3));
-        
+
             // Inherited syntax
             Expect(iarray, Contains(3));
             Expect(sarray, Contains("b"));
@@ -589,7 +589,7 @@ namespace NUnit.Framework.Tests
 
             // Only available using new syntax
             // Note that EqualTo and SameAs do NOT give
-            // identical results to Contains because 
+            // identical results to Contains because
             // Contains uses Object.Equals()
             Expect(iarray, Some.EqualTo(3));
             Expect(sarray, Some.EqualTo("b"));
@@ -611,8 +611,8 @@ namespace NUnit.Framework.Tests
             CollectionAssert.AreNotEquivalent(new int[] { 2, 2, 4, 3, 5 }, ints1to5);
             CollectionAssert.AreNotEquivalent(new int[] { 2, 4, 3, 5 }, ints1to5);
             CollectionAssert.AreNotEquivalent(new int[] { 2, 2, 1, 1, 4, 3, 5 }, ints1to5);
-            CollectionAssert.AreNotEquivalent(twothrees, twofours); 
-        
+            CollectionAssert.AreNotEquivalent(twothrees, twofours);
+
             // Constraint Syntax
             Assert.That(new int[] { 2, 1, 4, 3, 5 }, Is.EquivalentTo(ints1to5));
             Assert.That(new int[] { 2, 2, 4, 3, 5 }, Is.Not.EquivalentTo(ints1to5));
@@ -641,7 +641,7 @@ namespace NUnit.Framework.Tests
             Assert.That(new int[] { 1, 3, 5 }, Is.SubsetOf(ints1to5));
             Assert.That(new int[] { 1, 2, 3, 4, 5 }, Is.SubsetOf(ints1to5));
             Assert.That(new int[] { 2, 4, 6 }, Is.Not.SubsetOf(ints1to5));
-        
+
             // Inherited syntax
             Expect(new int[] { 1, 3, 5 }, SubsetOf(ints1to5));
             Expect(new int[] { 1, 2, 3, 4, 5 }, SubsetOf(ints1to5));
@@ -677,7 +677,7 @@ namespace NUnit.Framework.Tests
             Assert.That( array, Is.All.Length.EqualTo( 3 ) );
             Assert.That( array, Has.All.Property("Length").EqualTo(3) );
             Assert.That( array, Is.All.Property("Length").EqualTo(3) );
-            
+
             Assert.That( array2, Has.Some.Property("Length").EqualTo(2) );
             Assert.That( array2, Has.Some.Length.EqualTo(2) );
             Assert.That( array2, Has.Some.Property("Length").GreaterThan(2) );
@@ -692,7 +692,7 @@ namespace NUnit.Framework.Tests
             Assert.That( List.Map( array2 ).Property("Length"), Is.Unique );
 
             Assert.That( list, Has.Count.EqualTo( 4 ) );
-            
+
             // Inherited syntax
             Expect( list, Property( "Count" ) );
             Expect( list, Not.Property( "Nada" ) );
@@ -803,7 +803,7 @@ namespace NUnit.Framework.Tests
 #endif
         }
         #endregion
- 
+
         #region Invalid Code Tests
         // This method contains assertions that should not compile
         // You can check by uncommenting it.
@@ -820,6 +820,48 @@ namespace NUnit.Framework.Tests
         //    Assert.That(c, Is.Not.All);
         //    Assert.That(c, Is.All.Not);
         //}
+        #endregion
+
+        #region Assumptions
+
+        [Test]
+        public void PostiveAssumption()
+        {
+            Assume.That(true);
+
+            Assert.Pass("This will be hit because of the assumption.");
+        }
+
+        [Test]
+        public void NegativeAssumption()
+        {
+            Assume.That(false);
+
+            Assert.Fail("This will not be hit because of the assumption.");
+        }
+
+        #endregion
+
+        #region Warnings
+
+        [Test]
+        public void PostiveWarning()
+        {
+            Warn.If(true, "This will emit a warning");
+            Warn.Unless(false, "This will emit a warning");
+
+            Assert.Pass("This test passes despite the warnings.");
+        }
+
+        [Test]
+        public void NegativeWarning()
+        {
+            Warn.If(false, "This will not emit a warning");
+            Warn.Unless(true, "This will not emit a warning");
+
+            Assert.Pass("This test passes despite the warnings.");
+        }
+
         #endregion
     }
 
