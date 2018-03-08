@@ -103,11 +103,8 @@ Task("Test")
             DisplayHeading("Testing " + sample + " sample");
 
             int rc = StartProcess(
-				NUNIT3_CONSOLE,
-				new ProcessSettings()
-				{
-					Arguments = dllName
-				});
+				    NUNIT3_CONSOLE,
+				    new ProcessSettings { Arguments = dllName });
 
             if (rc > 0)
                 ErrorDetail.Add(string.Format("{0}: {1} tests failed", sample, rc));
