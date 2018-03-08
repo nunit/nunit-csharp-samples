@@ -17,3 +17,5 @@ packages
 
 tools
 !tools/packages.config
+.vs
+.dotnet

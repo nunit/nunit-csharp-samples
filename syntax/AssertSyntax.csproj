@@ -4,17 +4,17 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>7.10.3077</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A6E1D464-9AAF-4CA9-A818-819739132281}</ProjectGuid>
+    <ProjectGuid>{06F46FA2-687B-4B46-A912-C1B0B4CC1B20}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <AssemblyKeyContainerName />
-    <AssemblyName>ExpectedExceptionExample.Tests</AssemblyName>
+    <AssemblyName>Syntax.Tests</AssemblyName>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <RootNamespace>ExpectedExceptionExample</RootNamespace>
+    <RootNamespace>NUnit.Framework.Tests</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -84,10 +84,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ExpectedExceptionAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ExpectedExceptionTests.cs">
+    <Compile Include="AssertSyntaxTests.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
