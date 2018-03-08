@@ -11,10 +11,10 @@ var SOLUTION = "Samples.sln";
 Task("Clean")
   .Does(() =>
   {
-    DotNetBuild(SOLUTION, settings =>
-      settings.SetConfiguration(configuration)
-        .WithTarget("Clean")
-        .WithProperty("TreatWarningsAsErrors","false"));
+    MSBuild(SOLUTION, c =>
+      c.SetConfiguration(configuration)
+       .SetVerbosity(Verbosity.Minimal)
+       .WithTarget("Clean"));
   });
 
 Task("InitializeBuild")
@@ -24,13 +24,15 @@ Task("InitializeBuild")
   });
 
 Task("Build")
-    .Does(() =>
-    {
-      DotNetBuild(SOLUTION, settings =>
-        settings.SetConfiguration(configuration)
-          .WithTarget("Build")
-          .WithProperty("TreatWarningsAsErrors","false"));
-    });
+  .IsDependentOn("InitializeBuild")
+  .Does(() =>
+  {
+    MSBuild(SOLUTION, c =>
+      c.SetConfiguration(configuration)
+       .SetVerbosity(Verbosity.Minimal)
+       .WithTarget("Build")
+       .WithProperty("TreatWarningsAsErrors","true"));
+  });
 
 Task("Test")
   .IsDependentOn("Build")
