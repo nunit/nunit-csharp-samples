@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-money", "money\cs-money.csproj", "{11EDF872-A04D-4F75-A1BF-71168DC86AF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money", "money\Money.csproj", "{11EDF872-A04D-4F75-A1BF-71168DC86AF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpectedExceptionExample", "ExpectedExceptionExample\ExpectedExceptionExample.csproj", "{A6E1D464-9AAF-4CA9-A818-819739132281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-syntax", "syntax\cs-syntax.csproj", "{06F46FA2-687B-4B46-A912-C1B0B4CC1B20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertSyntax", "syntax\AssertSyntax.csproj", "{06F46FA2-687B-4B46-A912-C1B0B4CC1B20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51996B31-851B-463C-8B57-A7E51CA034EC}"
 	ProjectSection(SolutionItems) = preProject
