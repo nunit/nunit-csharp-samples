@@ -3,7 +3,7 @@ namespace NUnit.Samples.Money
 	using System;
 	using NUnit.Framework;
 	/// <summary>
-	/// 
+	/// Tests Money
 	/// </summary>
 	/// 
 	[TestFixture]
@@ -18,7 +18,7 @@ namespace NUnit.Samples.Money
 		private MoneyBag fMB2;
 
 		/// <summary>
-		/// 
+		/// Initializes Money test objects
 		/// </summary>
 		/// 
 		[SetUp]
@@ -34,7 +34,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that Moneybags multiply correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -49,7 +49,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that Moneybags negate(positive to negative values) correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -62,7 +62,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that adding currency to Moneybags happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -75,7 +75,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that subtracting currency to Moneybags happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -88,7 +88,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that adding multiple currencies to Moneybags in one statement happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -101,7 +101,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that Moneybags hold zero value after adding zero value
 		/// </summary>
 		/// 
 		[Test]
@@ -114,7 +114,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that a new bag is the same as adding value to an existing bag
 		/// </summary>
 		/// 
 		[Test]
@@ -127,7 +127,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that MoneyBag.Equals() works correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -147,7 +147,8 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that the hash of a new bag is the same as 
+		/// the hash of an existing bag with added value
 		/// </summary>
 		/// 
 		[Test]
@@ -158,7 +159,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that Money.Equals() works correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -175,7 +176,8 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that the hash of new Money is the same as 
+		/// the hash of initialized Money
 		/// </summary>
 		/// 
 		[Test]
@@ -187,7 +189,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that adding multiple small values is the same as adding one big value
 		/// </summary>
 		/// 
 		[Test]
@@ -202,7 +204,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that removing a value is the same as not having such a value
 		/// </summary>
 		/// 
 		[Test]
@@ -214,7 +216,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that removing multiple values works correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -228,7 +230,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that if value is subtracted from 0, the result will be negative.
 		/// </summary>
 		/// 
 		[Test]
@@ -242,7 +244,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that Money.ToString() function works correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -252,7 +254,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that adding more value to Money happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -264,7 +266,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that adding multiple currencies to Moneybags happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -277,7 +279,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that multiplying currency in Money happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -289,7 +291,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that negating(positive to negative values) currency in Money happens correctly
 		/// </summary>
 		/// 
 		[Test]
@@ -301,7 +303,7 @@ namespace NUnit.Samples.Money
 		}
 
 		/// <summary>
-		/// 
+		/// Assert that removing currency from Money happens correctly
 		/// </summary>
 		/// 
 		[Test]
