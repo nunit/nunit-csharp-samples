@@ -14,7 +14,8 @@ namespace TimeoutRetryAttributeExample
             { "RetryIsFiredDueToTimeout", 0 },
             { "RetryIsNotFiredDueToTimeout", 0 },
             { "RetryIsNotFiredDueToFailedAssertion", 0 },
-            { "RetryIsNotFiredDueToException", 0 }
+            { "RetryIsNotFiredDueToException", 0 },
+            { "RetryIsFiredDueToTimeoutAndLimitNotReached", 0 }
         };
 
         // This test should execute 3 times and fail due to reached retry number limit
@@ -57,6 +58,25 @@ namespace TimeoutRetryAttributeExample
             TestContext.Out.WriteLine($"Running test for the {++retryCount["RetryIsNotFiredDueToException"]} time");
             Thread.Sleep(3000); // Wait more than MaxTime threshold
             throw new Exception("Exception thrown"); // Throw exception
+        }
+
+        // This test should execute 3 times and fail 2 times due to reached retry number limit, then pass on the 3 run
+        [Test]
+        [MaxTime(2000)]
+        [TimeoutRetry(3)]
+        public void RetryIsFiredDueToTimeoutAndLimitNotReached()
+        {
+            TestContext.Out.WriteLine($"Running test for the {++retryCount["RetryIsFiredDueToTimeoutAndLimitNotReached"]} time");
+            TestContext.Out.WriteLine(retryCount["RetryIsFiredDueToTimeoutAndLimitNotReached"]);
+            if (retryCount["RetryIsFiredDueToTimeoutAndLimitNotReached"] < 3) // For 1 & 2 retry force timeout
+            {
+                Thread.Sleep(3000); // Wait more than MaxTime threshold
+            }
+            else
+            {
+                Thread.Sleep(1000); // Wait less than MaxTime threshold
+            }
+            Assert.True(true); // Add valid assertion
         }
     }
 }
