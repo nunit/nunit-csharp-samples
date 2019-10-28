@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -55,14 +56,18 @@ namespace TimeoutRetryAttributeExample
                 while (count-- > 0)
                 {
                     context.CurrentResult = innerCommand.Execute(context);
-
+                    
                     // Skip retry only with passed assertions or if failure is different than timeout
                     if (context.CurrentResult.ResultState != ResultState.Failure || !Regex.IsMatch(context.CurrentResult.Message, "Elapsed time of [0-9.,]*ms exceeds maximum of [0-9]*ms")) // NUnit.Framework.Internal.Commands.MaxTimeCommand
                         break;
 
                     // Clear result for retry
                     if (count > 0)
+                    {
                         context.CurrentResult = context.CurrentTest.MakeTestResult();
+                        context.StartTicks = Stopwatch.GetTimestamp(); // Reset test execution start time, so that only last run is included in 'Elapsed time'
+                    }
+                       
                 }
 
                 return context.CurrentResult;
