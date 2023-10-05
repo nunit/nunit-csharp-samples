@@ -43,7 +43,7 @@ namespace Money
         {
             // {[12 CHF][7 USD]} *2 == {[24 CHF][14 USD]}
             Money[] bag = { new Money(24, "CHF"), new Money(14, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(fMB1.Multiply(2), Is.EqualTo(expected));
             Assert.That(fMB1.Multiply(1), Is.EqualTo(fMB1));
             ClassicAssert.IsTrue(fMB1.Multiply(0).IsZero);
@@ -58,7 +58,7 @@ namespace Money
         {
             // {[12 CHF][7 USD]} negate == {[-12 CHF][-7 USD]}
             Money[] bag = { new Money(-12, "CHF"), new Money(-7, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(fMB1.Negate(), Is.EqualTo(expected));
         }
 
@@ -71,7 +71,7 @@ namespace Money
         {
             // {[12 CHF][7 USD]} + [14 CHF] == {[26 CHF][7 USD]}
             Money[] bag = { new Money(26, "CHF"), new Money(7, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(fMB1.Add(f14CHF), Is.EqualTo(expected));
         }
 
@@ -84,7 +84,7 @@ namespace Money
         {
             // {[12 CHF][7 USD]} - {[14 CHF][21 USD] == {[-2 CHF][-14 USD]}
             Money[] bag = { new Money(-2, "CHF"), new Money(-14, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(fMB1.Subtract(fMB2), Is.EqualTo(expected));
         }
 
@@ -97,7 +97,7 @@ namespace Money
         {
             // {[12 CHF][7 USD]} + {[14 CHF][21 USD]} == {[26 CHF][28 USD]}
             Money[] bag = { new Money(26, "CHF"), new Money(28, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(fMB1.Add(fMB2), Is.EqualTo(expected));
         }
 
@@ -123,7 +123,7 @@ namespace Money
         {
             // [12 CHF] + [7 USD] == {[12 CHF][7 USD]}
             Money[] bag = { f12CHF, f7USD };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(f12CHF.Add(f7USD), Is.EqualTo(expected));
         }
 
@@ -140,7 +140,7 @@ namespace Money
             ClassicAssert.IsFalse(fMB1.Equals(null));
 
             ClassicAssert.IsTrue(fMB1.Equals(fMB1));
-            MoneyBag equal = new MoneyBag(new Money(12, "CHF"), new Money(7, "USD"));
+            var equal = new MoneyBag(new Money(12, "CHF"), new Money(7, "USD"));
             ClassicAssert.IsTrue(fMB1.Equals(equal));
             ClassicAssert.IsTrue(!fMB1.Equals(f12CHF));
             ClassicAssert.IsTrue(!f12CHF.Equals(fMB1));
@@ -155,7 +155,7 @@ namespace Money
         [Test]
         public void MoneyBagHash()
         {
-            MoneyBag equal = new MoneyBag(new Money(12, "CHF"), new Money(7, "USD"));
+            var equal = new MoneyBag(new Money(12, "CHF"), new Money(7, "USD"));
             Assert.That(equal.GetHashCode(), Is.EqualTo(fMB1.GetHashCode()));
         }
 
@@ -170,7 +170,7 @@ namespace Money
             // objects are equal. But here we are testing the MoneyBag.Equals()
             // method itself, so using AreEqual would not serve the purpose.
             ClassicAssert.IsFalse(f12CHF.Equals(null));
-            Money equalMoney = new Money(12, "CHF");
+            var equalMoney = new Money(12, "CHF");
             ClassicAssert.IsTrue(f12CHF.Equals(f12CHF));
             ClassicAssert.IsTrue(f12CHF.Equals(equalMoney));
             ClassicAssert.IsFalse(f12CHF.Equals(f14CHF));
@@ -185,7 +185,7 @@ namespace Money
         public void MoneyHash()
         {
             ClassicAssert.IsFalse(f12CHF.Equals(null));
-            Money equal = new Money(12, "CHF");
+            var equal = new Money(12, "CHF");
             Assert.That(equal.GetHashCode(), Is.EqualTo(f12CHF.GetHashCode()));
         }
 
@@ -197,10 +197,10 @@ namespace Money
         public void Normalize()
         {
             Money[] bag = { new Money(26, "CHF"), new Money(28, "CHF"), new Money(6, "CHF") };
-            MoneyBag moneyBag = new MoneyBag(bag);
+            var moneyBag = new MoneyBag(bag);
             Money[] expected = { new Money(60, "CHF") };
             // note: expected is still a MoneyBag
-            MoneyBag expectedBag = new MoneyBag(expected);
+            var expectedBag = new MoneyBag(expected);
             Assert.That(moneyBag, Is.EqualTo(expectedBag));
         }
 
@@ -212,7 +212,7 @@ namespace Money
         public void Normalize2()
         {
             // {[12 CHF][7 USD]} - [12 CHF] == [7 USD]
-            Money expected = new Money(7, "USD");
+            var expected = new Money(7, "USD");
             Assert.That(fMB1.Subtract(f12CHF), Is.EqualTo(expected));
         }
 
@@ -225,8 +225,8 @@ namespace Money
         {
             // {[12 CHF][7 USD]} - {[12 CHF][3 USD]} == [4 USD]
             Money[] s1 = { new Money(12, "CHF"), new Money(3, "USD") };
-            MoneyBag ms1 = new MoneyBag(s1);
-            Money expected = new Money(4, "USD");
+            var ms1 = new MoneyBag(s1);
+            var expected = new Money(4, "USD");
             Assert.That(fMB1.Subtract(ms1), Is.EqualTo(expected));
         }
 
@@ -239,8 +239,8 @@ namespace Money
         {
             // [12 CHF] - {[12 CHF][3 USD]} == [-3 USD]
             Money[] s1 = { new Money(12, "CHF"), new Money(3, "USD") };
-            MoneyBag ms1 = new MoneyBag(s1);
-            Money expected = new Money(-3, "USD");
+            var ms1 = new MoneyBag(s1);
+            var expected = new Money(-3, "USD");
             Assert.That(f12CHF.Subtract(ms1), Is.EqualTo(expected));
         }
 
@@ -262,7 +262,7 @@ namespace Money
         public void SimpleAdd()
         {
             // [12 CHF] + [14 CHF] == [26 CHF]
-            Money expected = new Money(26, "CHF");
+            var expected = new Money(26, "CHF");
             Assert.That(f12CHF.Add(f14CHF), Is.EqualTo(expected));
         }
 
@@ -275,7 +275,7 @@ namespace Money
         {
             // [14 CHF] + {[12 CHF][7 USD]} == {[26 CHF][7 USD]}
             Money[] bag = { new Money(26, "CHF"), new Money(7, "USD") };
-            MoneyBag expected = new MoneyBag(bag);
+            var expected = new MoneyBag(bag);
             Assert.That(f14CHF.Add(fMB1), Is.EqualTo(expected));
         }
 
@@ -287,7 +287,7 @@ namespace Money
         public void SimpleMultiply()
         {
             // [14 CHF] *2 == [28 CHF]
-            Money expected = new Money(28, "CHF");
+            var expected = new Money(28, "CHF");
             Assert.That(f14CHF.Multiply(2), Is.EqualTo(expected));
         }
 
@@ -299,7 +299,7 @@ namespace Money
         public void SimpleNegate()
         {
             // [14 CHF] negate == [-14 CHF]
-            Money expected = new Money(-14, "CHF");
+            var expected = new Money(-14, "CHF");
             Assert.That(f14CHF.Negate(), Is.EqualTo(expected));
         }
 
@@ -311,7 +311,7 @@ namespace Money
         public void SimpleSubtract()
         {
             // [14 CHF] - [12 CHF] == [2 CHF]
-            Money expected = new Money(2, "CHF");
+            var expected = new Money(2, "CHF");
             Assert.That(f14CHF.Subtract(f12CHF), Is.EqualTo(expected));
         }
     }

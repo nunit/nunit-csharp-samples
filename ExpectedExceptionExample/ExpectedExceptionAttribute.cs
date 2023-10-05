@@ -53,10 +53,10 @@ namespace ExpectedExceptionExample
                     context.CurrentResult.SetResult(ResultState.Success);
                 else if (caughtType != null)
                     context.CurrentResult.SetResult(ResultState.Failure,
-                        string.Format("Expected {0} but got {1}", _expectedType.Name, caughtType.Name));
+                        $"Expected {_expectedType.Name} but got {caughtType.Name}");
                 else
                     context.CurrentResult.SetResult(ResultState.Failure,
-                        string.Format("Expected {0} but no exception was thrown", _expectedType.Name));
+                        $"Expected {_expectedType.Name} but no exception was thrown");
 
                 return context.CurrentResult;
             }

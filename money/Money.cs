@@ -1,96 +1,96 @@
 using System;
 using System.Text;
 
-namespace Money 
+namespace Money
 {
     /// <summary>A simple Money.</summary>
-	class Money: IMoney 
-	{
+	class Money : IMoney
+    {
 
-		private int fAmount;
-		private String fCurrency;
-        
-		/// <summary>Constructs a money from the given amount and
-		/// currency.</summary>
-		public Money(int amount, String currency) 
-		{
-			fAmount= amount;
-			fCurrency= currency;
-		}
+        private int fAmount;
+        private String fCurrency;
 
-		/// <summary>Adds a money to this money. Forwards the request to
-		/// the AddMoney helper.</summary>
-		public IMoney Add(IMoney m) 
-		{
-			return m.AddMoney(this);
-		}
+        /// <summary>Constructs a money from the given amount and
+        /// currency.</summary>
+        public Money(int amount, String currency)
+        {
+            fAmount = amount;
+            fCurrency = currency;
+        }
 
-		public IMoney AddMoney(Money m) 
-		{
-			if (m.Currency.Equals(Currency) )
-				return new Money(Amount+m.Amount, Currency);
-			return new MoneyBag(this, m);
-		}
+        /// <summary>Adds a money to this money. Forwards the request to
+        /// the AddMoney helper.</summary>
+        public IMoney Add(IMoney m)
+        {
+            return m.AddMoney(this);
+        }
 
-		public IMoney AddMoneyBag(MoneyBag s) 
-		{
-			return s.AddMoney(this);
-		}
+        public IMoney AddMoney(Money m)
+        {
+            if (m.Currency.Equals(Currency))
+                return new Money(Amount + m.Amount, Currency);
+            return new MoneyBag(this, m);
+        }
 
-		public int Amount 
-		{
-			get { return fAmount; }
-		}
+        public IMoney AddMoneyBag(MoneyBag s)
+        {
+            return s.AddMoney(this);
+        }
 
-		public String Currency 
-		{
-			get { return fCurrency; }
-		}
+        public int Amount
+        {
+            get { return fAmount; }
+        }
 
-		public override bool Equals(Object anObject) 
-		{
-			if (IsZero)
-				if (anObject is IMoney)
-					return ((IMoney)anObject).IsZero;
-			if (anObject is Money) 
-			{
-				Money aMoney= (Money)anObject;
-				return aMoney.Currency.Equals(Currency)
-					&& Amount == aMoney.Amount;
-			}
-			return false;
-		}
+        public String Currency
+        {
+            get { return fCurrency; }
+        }
 
-		public override int GetHashCode() 
-		{
-			return fCurrency.GetHashCode()+fAmount;
-		}
+        public override bool Equals(Object anObject)
+        {
+            if (IsZero)
+                if (anObject is IMoney)
+                    return ((IMoney)anObject).IsZero;
+            if (anObject is Money)
+            {
+                Money aMoney = (Money)anObject;
+                return aMoney.Currency.Equals(Currency)
+                    && Amount == aMoney.Amount;
+            }
+            return false;
+        }
 
-		public bool IsZero 
-		{
-			get { return Amount == 0; }
-		}
+        public override int GetHashCode()
+        {
+            return fCurrency.GetHashCode() + fAmount;
+        }
 
-		public IMoney Multiply(int factor) 
-		{
-			return new Money(Amount*factor, Currency);
-		}
+        public bool IsZero
+        {
+            get { return Amount == 0; }
+        }
 
-		public IMoney Negate() 
-		{
-			return new Money(-Amount, Currency);
-		}
+        public IMoney Multiply(int factor)
+        {
+            return new Money(Amount * factor, Currency);
+        }
 
-		public IMoney Subtract(IMoney m) 
-		{
-			return Add(m.Negate());
-		}
+        public IMoney Negate()
+        {
+            return new Money(-Amount, Currency);
+        }
 
-		public override String ToString() 
-		{
-			StringBuilder buffer = new StringBuilder();
-			buffer.Append("["+Amount+" "+Currency+"]");
-			return buffer.ToString();
-		}
-	}
+        public IMoney Subtract(IMoney m)
+        {
+            return Add(m.Negate());
+        }
+
+        public override String ToString()
+        {
+            StringBuilder buffer = new StringBuilder();
+            buffer.Append("[" + Amount + " " + Currency + "]");
+            return buffer.ToString();
+        }
+    }
 }
