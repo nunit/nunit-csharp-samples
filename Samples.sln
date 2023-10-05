@@ -1,27 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money", "money\Money.csproj", "{11EDF872-A04D-4F75-A1BF-71168DC86AF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Money", "money\Money.csproj", "{11EDF872-A04D-4F75-A1BF-71168DC86AF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpectedExceptionExample", "ExpectedExceptionExample\ExpectedExceptionExample.csproj", "{A6E1D464-9AAF-4CA9-A818-819739132281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpectedExceptionExample", "ExpectedExceptionExample\ExpectedExceptionExample.csproj", "{A6E1D464-9AAF-4CA9-A818-819739132281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertSyntax", "syntax\AssertSyntax.csproj", "{06F46FA2-687B-4B46-A912-C1B0B4CC1B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssertSyntax", "syntax\AssertSyntax.csproj", "{06F46FA2-687B-4B46-A912-C1B0B4CC1B20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51996B31-851B-463C-8B57-A7E51CA034EC}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		.travis.yml = .travis.yml
-		appveyor.yml = appveyor.yml
-		build.cake = build.cake
 		BUILDING.md = BUILDING.md
 		LICENSE.txt = LICENSE.txt
+		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDrivenTests", "DataDrivenTests\DataDrivenTests.csproj", "{FBBC6F15-E718-4080-832C-9D1F4B7A352A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDrivenTests", "DataDrivenTests\DataDrivenTests.csproj", "{FBBC6F15-E718-4080-832C-9D1F4B7A352A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

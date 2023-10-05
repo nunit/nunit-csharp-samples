@@ -1,4 +1,4 @@
-namespace NUnit.Samples.Money
+namespace Money
 {
 
 	/// <summary>The common interface for simple Monies and MoneyBags.</summary>

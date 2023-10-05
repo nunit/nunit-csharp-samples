@@ -1,9 +1,10 @@
 ﻿using System;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
 using NUnit.Framework.Internal.Commands;
 
-namespace NUnit.Framework
+namespace ExpectedExceptionExample
 {
     /// <summary>
     /// A simple ExpectedExceptionAttribute
@@ -52,10 +53,10 @@ namespace NUnit.Framework
                     context.CurrentResult.SetResult(ResultState.Success);
                 else if (caughtType != null)
                     context.CurrentResult.SetResult(ResultState.Failure,
-                        string.Format("Expected {0} but got {1}", _expectedType.Name, caughtType.Name));
+                        $"Expected {_expectedType.Name} but got {caughtType.Name}");
                 else
                     context.CurrentResult.SetResult(ResultState.Failure,
-                        string.Format("Expected {0} but no exception was thrown", _expectedType.Name));
+                        $"Expected {_expectedType.Name} but no exception was thrown");
 
                 return context.CurrentResult;
             }
