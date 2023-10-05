@@ -1,10 +1,9 @@
-namespace NUnit.Samples.Money 
+using System;
+using System.Text;
+
+namespace Money 
 {
-
-	using System;
-	using System.Text;
-
-	/// <summary>A simple Money.</summary>
+    /// <summary>A simple Money.</summary>
 	class Money: IMoney 
 	{
 

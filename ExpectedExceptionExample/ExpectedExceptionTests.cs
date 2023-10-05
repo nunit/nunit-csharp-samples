@@ -12,5 +12,11 @@ namespace ExpectedExceptionExample
         {
             throw new ArgumentException();
         }
+
+        [Test]
+        public void HandlesArgumentExceptionWithNewSyntax()
+        {
+            Assert.Throws<ArgumentException>(() => throw new ArgumentException());
+        }
     }
 }

@@ -1,11 +1,10 @@
-namespace NUnit.Samples.Money 
+using System;
+using System.Collections;
+using System.Text;
+
+namespace Money 
 {
-
-	using System;
-	using System.Collections;
-	using System.Text;
-
-	/// <summary>A MoneyBag defers exchange rate conversions.</summary>
+    /// <summary>A MoneyBag defers exchange rate conversions.</summary>
 	/// <remarks>For example adding 
 	/// 12 Swiss Francs to 14 US Dollars is represented as a bag 
 	/// containing the two Monies 12 CHF and 14 USD. Adding another

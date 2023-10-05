@@ -1,6 +1,8 @@
 ## Build Scripts
 
-Each of the sample solutions can be built individually within Visual Studio. To build and test all solutions, a **Cake** (http://cakebuild.net) script is provided.
+Each of the sample solutions can be built individually within Visual Studio. 
+
+To build and test all solutions, a **Cake** (http://cakebuild.net) script is provided.
 The primary script that controls this is build.cake. We modify build.cake when we need to add new 
 targets or change the way the build is done. Normally build.cake is not invoked directly but through
 build.ps1 (on Windows) or build.sh (on Linux). These two scripts are provided by the Cake project
