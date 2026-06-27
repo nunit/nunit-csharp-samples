@@ -1,0 +1,137 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-06-27T18:44:40.7414281Z",
+  "analysisEndTime": "2026-06-27T18:44:41.2520051Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 2,
+      "incidents": 2,
+      "effort": 2
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 1,
+        "Optional": 0,
+        "Potential": 0,
+        "Information": 1
+      },
+      "category": {
+        "NuGet": 1,
+        "Project": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "DataDrivenTests.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 2,
+      "properties": {
+        "appName": "DataDrivenTests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net6.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 4,
+        "numberOfCodeFiles": 2,
+        "linesTotal": 1817,
+        "linesOfCode": 37,
+        "totalApiScanned": 33,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "b592fc9c-0ca3-4bc2-9001-182e93043a70",
+          "ruleId": "NuGet.0006",
+          "projectPath": "DataDrivenTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Found 1 files matching the rule:\r\n\r\nNuGet.config\r\n",
+              "protected": "Found 1 files matching the rule:\r\n\r\nNuGet.config\r\n"
+            },
+            "kind": "File",
+            "path": "C:\\repos\\nunit\\nunit-csharp-samples\\NuGet.config",
+            "snippet": "Found 1 files matching the rule:\r\n\r\nNuGet.config\r\n",
+            "protectedSnippet": "Found 1 files matching the rule:\r\n\r\nNuGet.config\r\n"
+          }
+        },
+        {
+          "incidentId": "cb01fe95-a6c3-4fc7-a731-6bad2cf9f664",
+          "ruleId": "Project.0002",
+          "projectPath": "DataDrivenTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net6.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net6.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "DataDrivenTests.csproj",
+            "snippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net6.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net6.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0006": {
+      "id": "NuGet.0006",
+      "isFeature": false,
+      "description": "NuGet package source mappings are recommended.\n\nWhen NuGet.config contains multiple package sources, Package Source Mapping is a tool that can be used to improve your supply chain security, especially if you use a mix of public and private package sources.\n\nBy default, NuGet will search all configured package sources when it needs to download a package. When a package exists on multiple sources, it may not be deterministic which source the package will be downloaded from. With Package Source Mapping, you can filter, per package, which source(s) NuGet will search.",
+      "label": "NuGet package source mappings are recommended",
+      "severity": "Information",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2288407",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
