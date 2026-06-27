@@ -467,6 +467,7 @@ public class AssertSyntaxTests
         Assert.That(sarray, Has.Some.EqualTo("b"));
         Assert.That(sarray, Has.None.EqualTo("x"));
         Assert.That(iarray, Has.None.SameAs(1.0d));
+        Assert.That(iarray, Has.None.SameAs(1));
         Assert.That(iarray, Has.All.LessThan(10));
         Assert.That(sarray, Has.All.Length.EqualTo(1));
         Assert.That(sarray, Has.None.Property("Length").GreaterThan(3));
