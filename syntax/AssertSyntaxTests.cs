@@ -1,8 +1,19 @@
 using System.Collections;
 using NUnit.Framework;
-using NUnit.Framework.Legacy;
 
 namespace AssertSyntax;
+
+// This file is part of the NUnit framework and is used to test the syntax of assertions in NUnit.
+// It contains a series of tests that demonstrate the various ways to use assertions, including both classic and constraint-based syntax.
+// The tests cover a wide range of scenarios, including simple constraints, type constraints, string constraints, equality tests, comparison tests, collection tests, property tests, and operator tests.
+// Additionally, it includes tests for assumptions and warnings.
+// Warnings are suppressed
+#pragma warning disable NUnit2007 // The actual value should not be a constant
+#pragma warning disable NUnit2049 // Consider using Assert.That(...) instead of CollectionAssert(...)
+#pragma warning disable NUnit2009 // The same value has been provided as both the actual and the expected argument
+#pragma warning disable CA1825 // Avoid zero-length array allocations
+#pragma warning disable NUnit2010 // Use EqualConstraint for better assertion messages in case of failure
+
 
 /// <summary>
 /// This test fixture attempts to exercise all the syntactic
@@ -24,14 +35,16 @@ public class AssertSyntaxTests
     [Test]
     public void IsNull()
     {
-        object nada = null;
+        object nada = GetObjectAsNull();
 
         // Constraint Syntax
         Assert.That(nada, Is.Null);
 
         // Classic syntax
-        ClassicAssert.IsNull(nada);
+        Assert.IsNull(nada);
     }
+
+    private static object GetObjectAsNull() => null;
 
     [Test]
     public void IsNotNull()
@@ -42,28 +55,34 @@ public class AssertSyntaxTests
         Assert.That(theAnswer, Is.Not.Null);
 
         // Classic syntax
-        ClassicAssert.IsNotNull(42);
+        Assert.IsNotNull(42);
     }
 
     [Test]
     public void IsTrue()
     {
         // Constraint Syntax
-        Assert.That(2 + 2 == 4, Is.True);
-        Assert.That(2 + 2 == 4);
+        int result = GetResultAs4();
+        Assert.That(result == 4, Is.True);
+        Assert.That(result == 4);
 
         // Classic syntax
-        ClassicAssert.IsTrue(2 + 2 == 4);
+        Assert.IsTrue(GetResultAs4() == 4);
     }
+
+    /// <summary>
+    /// Returns 4
+    /// </summary>
+    private static int GetResultAs4() => 4;
 
     [Test]
     public void IsFalse()
     {
         // Constraint Syntax
-        Assert.That(2 + 2 == 5, Is.False);
+        Assert.That(GetResultAs4() == 5, Is.False);
 
         // Classic syntax
-        ClassicAssert.IsFalse(2 + 2 == 5);
+        Assert.IsFalse(GetResultAs4() == 5);
     }
 
     [Test]
@@ -77,8 +96,8 @@ public class AssertSyntaxTests
         Assert.That(f, Is.NaN);
 
         // Classic syntax
-        ClassicAssert.IsNaN(d);
-        ClassicAssert.IsNaN(f);
+        Assert.IsNaN(d);
+        Assert.IsNaN(f);
     }
 
     [Test]
@@ -89,8 +108,8 @@ public class AssertSyntaxTests
         Assert.That("Hello!", Is.Not.Empty);
 
         // Classic syntax
-        ClassicAssert.IsEmpty("");
-        ClassicAssert.IsNotEmpty("Hello!");
+        Assert.IsEmpty("");
+        Assert.IsNotEmpty("Hello!");
     }
 
     [Test]
@@ -101,8 +120,8 @@ public class AssertSyntaxTests
         Assert.That(new[] { 1, 2, 3 }, Is.Not.Empty);
 
         // Classic syntax
-        ClassicAssert.IsEmpty(new bool[0]);
-        ClassicAssert.IsNotEmpty(new[] { 1, 2, 3 });
+        Assert.IsEmpty(new bool[0]);
+        Assert.IsNotEmpty(new[] { 1, 2, 3 });
     }
     #endregion
 
@@ -116,10 +135,10 @@ public class AssertSyntaxTests
         Assert.That("Hello", Is.Not.TypeOf(typeof(int)));
 
         // Classic syntax workarounds
-        ClassicAssert.AreEqual(typeof(string), "Hello".GetType());
-        ClassicAssert.AreEqual("System.String", "Hello".GetType().FullName);
-        ClassicAssert.AreNotEqual(typeof(int), "Hello".GetType());
-        ClassicAssert.AreNotEqual("System.Int32", "Hello".GetType().FullName);
+        Assert.AreEqual(typeof(string), "Hello".GetType());
+        Assert.AreEqual("System.String", "Hello".GetType().FullName);
+        Assert.AreNotEqual(typeof(int), "Hello".GetType());
+        Assert.AreNotEqual("System.Int32", "Hello".GetType().FullName);
     }
 
     [Test]
@@ -130,8 +149,8 @@ public class AssertSyntaxTests
         Assert.That(5, Is.Not.InstanceOf(typeof(string)));
 
         // Classic syntax
-        ClassicAssert.IsInstanceOf(typeof(string), "Hello");
-        ClassicAssert.IsNotInstanceOf(typeof(string), 5);
+        Assert.IsInstanceOf(typeof(string), "Hello");
+        Assert.IsNotInstanceOf(typeof(string), 5);
     }
 
     [Test]
@@ -142,8 +161,8 @@ public class AssertSyntaxTests
         Assert.That(5, Is.Not.AssignableFrom(typeof(string)));
 
         // Classic syntax
-        ClassicAssert.IsAssignableFrom(typeof(string), "Hello");
-        ClassicAssert.IsNotAssignableFrom(typeof(string), 5);
+        Assert.IsAssignableFrom(typeof(string), "Hello");
+        Assert.IsNotAssignableFrom(typeof(string), 5);
     }
     #endregion
 
@@ -163,7 +182,9 @@ public class AssertSyntaxTests
         Assert.That(array, Is.All.Contains("b"));
 
         // Classic Syntax
+#pragma warning disable NUnit2048
         StringAssert.Contains("World", phrase);
+#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -181,7 +202,9 @@ public class AssertSyntaxTests
         Assert.That(greetings, Is.All.StartsWith("h").IgnoreCase);
 
         // Classic syntax
+#pragma warning disable NUnit2048
         StringAssert.StartsWith("Hello", phrase);
+#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -198,7 +221,9 @@ public class AssertSyntaxTests
         Assert.That(greetings, Is.All.EndsWith("!"));
 
         // Classic Syntax
+#pragma warning disable NUnit2048
         StringAssert.EndsWith("!", phrase);
+#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -216,7 +241,9 @@ public class AssertSyntaxTests
             Is.All.EqualTo("hello").IgnoreCase);
 
         // Classic syntax
+#pragma warning disable NUnit2048
         StringAssert.AreEqualIgnoringCase("hello world!", phrase);
+#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -234,8 +261,10 @@ public class AssertSyntaxTests
         Assert.That(quotes, Is.All.Matches("never").IgnoreCase);
 
         // Classic syntax
+#pragma warning disable NUnit2048
         StringAssert.IsMatch("all good men", phrase);
         StringAssert.IsMatch("Now.*come", phrase);
+#pragma warning restore NUnit2048
     }
     #endregion
 
@@ -255,10 +284,10 @@ public class AssertSyntaxTests
         Assert.That(i3, Is.Not.EqualTo(iunequal));
 
         // Classic Syntax
-        ClassicAssert.AreEqual(4, 2 + 2);
-        ClassicAssert.AreEqual(i3, d3);
-        ClassicAssert.AreNotEqual(5, 2 + 2);
-        ClassicAssert.AreNotEqual(i3, iunequal);
+        Assert.AreEqual(4, 2 + 2);
+        Assert.AreEqual(i3, d3);
+        Assert.AreNotEqual(5, 2 + 2);
+        Assert.AreNotEqual(i3, iunequal);
     }
 
     [Test]
@@ -275,8 +304,8 @@ public class AssertSyntaxTests
         Assert.That(5999999999ul, Is.EqualTo(6000000000ul).Within(5ul));
 
         // CLassic syntax
-        ClassicAssert.AreEqual(5.0d, 4.99d, 0.05d);
-        ClassicAssert.AreEqual(5.0f, 4.99f, 0.05f);
+        Assert.AreEqual(5.0d, 4.99d, 0.05d);
+        Assert.AreEqual(5.0f, 4.99f, 0.05f);
     }
 
     [Test]
@@ -330,9 +359,9 @@ public class AssertSyntaxTests
         Assert.That(7, Is.AtLeast(7));
 
         // Classic Syntax
-        ClassicAssert.Greater(7, 3);
-        ClassicAssert.GreaterOrEqual(7, 3);
-        ClassicAssert.GreaterOrEqual(7, 7);
+        Assert.Greater(7, 3);
+        Assert.GreaterOrEqual(7, 3);
+        Assert.GreaterOrEqual(7, 7);
 
         // Constraint Syntax
         Assert.That(3, Is.LessThan(7));
@@ -343,9 +372,9 @@ public class AssertSyntaxTests
 
 
         // Classic syntax
-        ClassicAssert.Less(3, 7);
-        ClassicAssert.LessOrEqual(3, 7);
-        ClassicAssert.LessOrEqual(3, 3);
+        Assert.Less(3, 7);
+        Assert.LessOrEqual(3, 7);
+        Assert.LessOrEqual(3, 3);
     }
     #endregion
 
@@ -443,14 +472,13 @@ public class AssertSyntaxTests
         Assert.That(sarray, Has.None.Property("Length").GreaterThan(3));
 
         // Classic syntax
-        ClassicAssert.Contains(3, iarray);
-        ClassicAssert.Contains("b", sarray);
+        Assert.Contains(3, iarray);
+        Assert.Contains("b", sarray);
         CollectionAssert.Contains(iarray, 3);
         CollectionAssert.Contains(sarray, "b");
         CollectionAssert.DoesNotContain(sarray, "x");
         // Showing that Contains uses NUnit equality
         CollectionAssert.Contains(iarray, 1.0d);
-
 
     }
 
@@ -490,7 +518,6 @@ public class AssertSyntaxTests
         CollectionAssert.IsSubsetOf(new[] { 1, 2, 3, 4, 5 }, ints1to5);
         CollectionAssert.IsNotSubsetOf(new[] { 2, 4, 6 }, ints1to5);
         CollectionAssert.IsNotSubsetOf(new[] { 1, 2, 2, 2, 5 }, ints1to5);
-       
     }
     #endregion
 
@@ -498,8 +525,8 @@ public class AssertSyntaxTests
     [Test]
     public void PropertyTests()
     {
-        string[] array = { "abc", "bca", "xyz", "qrs" };
-        string[] array2 = { "a", "ab", "abc" };
+        string[] array = ["abc", "bca", "xyz", "qrs"];
+        string[] array2 = ["a", "ab", "abc"];
         var list = new ArrayList(array);
 
         // Not available using the classic syntax
@@ -557,21 +584,18 @@ public class AssertSyntaxTests
     [Test]
     public void NotOperator()
     {
-        // The ! operator is only available in the new syntax
         Assert.That(42, !Is.Null);
     }
 
     [Test]
     public void AndOperator()
     {
-        // The & operator is only available in the new syntax
         Assert.That(7, Is.GreaterThan(5) & Is.LessThan(10));
     }
 
     [Test]
     public void OrOperator()
     {
-        // The | operator is only available in the new syntax
         Assert.That(3, Is.LessThan(5) | Is.GreaterThan(10));
     }
 
