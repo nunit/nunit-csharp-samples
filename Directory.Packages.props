@@ -5,10 +5,7 @@
     <ItemGroup>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
         <PackageVersion Include="NUnit" Version="5.0.0-alpha.100.20" />
-        <PackageVersion Include="NUnit.Analyzers" Version="4.14.0">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageVersion>
+        <PackageVersion Include="NUnit.Analyzers" Version="4.14.0" />
         <PackageVersion Include="NUnit3TestAdapter" Version="6.2.0" />
         <PackageVersion Include="coverlet.collector" Version="10.0.1">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
