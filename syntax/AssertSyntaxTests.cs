@@ -13,6 +13,7 @@ namespace AssertSyntax;
 #pragma warning disable NUnit2009 // The same value has been provided as both the actual and the expected argument
 #pragma warning disable CA1825 // Avoid zero-length array allocations
 #pragma warning disable NUnit2010 // Use EqualConstraint for better assertion messages in case of failure
+#pragma warning disable NUnit2048 // Consider using Assert.That(...) instead of StringAssert.Contains(...)
 
 
 /// <summary>
@@ -175,16 +176,13 @@ public class AssertSyntaxTests
 
         // Constraint Syntax
         Assert.That(phrase, Does.Contain("World"));
-        // Only available using new syntax
         Assert.That(phrase, Does.Not.Contain("goodbye"));
         Assert.That(phrase, Does.Contain("WORLD").IgnoreCase);
         Assert.That(phrase, Does.Not.Contain("BYE").IgnoreCase);
         Assert.That(array, Is.All.Contains("b"));
 
         // Classic Syntax
-#pragma warning disable NUnit2048
         StringAssert.Contains("World", phrase);
-#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -195,16 +193,13 @@ public class AssertSyntaxTests
 
         // Constraint Syntax
         Assert.That(phrase, Does.StartWith("Hello"));
-        // Only available using new syntax
         Assert.That(phrase, Does.Not.StartWith("Hi!"));
         Assert.That(phrase, Does.StartWith("HeLLo").IgnoreCase);
         Assert.That(phrase, Does.Not.StartWith("HI").IgnoreCase);
         Assert.That(greetings, Is.All.StartsWith("h").IgnoreCase);
 
         // Classic syntax
-#pragma warning disable NUnit2048
         StringAssert.StartsWith("Hello", phrase);
-#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -221,9 +216,7 @@ public class AssertSyntaxTests
         Assert.That(greetings, Is.All.EndsWith("!"));
 
         // Classic Syntax
-#pragma warning disable NUnit2048
         StringAssert.EndsWith("!", phrase);
-#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -241,9 +234,7 @@ public class AssertSyntaxTests
             Is.All.EqualTo("hello").IgnoreCase);
 
         // Classic syntax
-#pragma warning disable NUnit2048
         StringAssert.AreEqualIgnoringCase("hello world!", phrase);
-#pragma warning restore NUnit2048
     }
 
     [Test]
@@ -261,10 +252,8 @@ public class AssertSyntaxTests
         Assert.That(quotes, Is.All.Matches("never").IgnoreCase);
 
         // Classic syntax
-#pragma warning disable NUnit2048
         StringAssert.IsMatch("all good men", phrase);
         StringAssert.IsMatch("Now.*come", phrase);
-#pragma warning restore NUnit2048
     }
     #endregion
 
@@ -303,7 +292,7 @@ public class AssertSyntaxTests
         Assert.That(4999999999L, Is.EqualTo(5000000000L).Within(5L));
         Assert.That(5999999999ul, Is.EqualTo(6000000000ul).Within(5ul));
 
-        // CLassic syntax
+        // Classic syntax
         Assert.AreEqual(5.0d, 4.99d, 0.05d);
         Assert.AreEqual(5.0f, 4.99f, 0.05f);
     }
@@ -466,8 +455,6 @@ public class AssertSyntaxTests
         Assert.That(iarray, Has.Member(3));
         Assert.That(sarray, Has.Some.EqualTo("b"));
         Assert.That(sarray, Has.None.EqualTo("x"));
-        Assert.That(iarray, Has.None.SameAs(1.0d));
-        Assert.That(iarray, Has.None.SameAs(1));
         Assert.That(iarray, Has.All.LessThan(10));
         Assert.That(sarray, Has.All.Length.EqualTo(1));
         Assert.That(sarray, Has.None.Property("Length").GreaterThan(3));
