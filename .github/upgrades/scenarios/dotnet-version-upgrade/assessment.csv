@@ -1,3 +1,0 @@
-Issue ID,Description,State,Severity,Story Points,Project Path,Location Kind,Path,Line,Column,Incident ID,Help Link,Assembly Name,Assembly Version,Assembly Public Key,Snippet
-NuGet.0006,NuGet package source mappings are recommended,Active,Information,1,DataDrivenTests.csproj,File,C:\repos\nunit\nunit-csharp-samples\NuGet.config,,,,,,,,Found 1 files matching the rule:    NuGet.config  
-Project.0002,Project's target framework(s) needs to be changed,Active,Mandatory,1,DataDrivenTests.csproj,File,DataDrivenTests.csproj,,,,,,,,Current target framework: net6.0 Recommended target framework: net10.0

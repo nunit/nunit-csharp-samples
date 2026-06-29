@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".gitattributes" />
+    <File Path=".github/workflows/CI.yml" />
     <File Path=".gitignore" />
     <File Path="BUILDING.md" />
     <File Path="Directory.Packages.props" />
