@@ -46,7 +46,7 @@ namespace Money
             var expected = new MoneyBag(bag);
             Assert.That(fMB1.Multiply(2), Is.EqualTo(expected));
             Assert.That(fMB1.Multiply(1), Is.EqualTo(fMB1));
-            ClassicAssert.IsTrue(fMB1.Multiply(0).IsZero);
+            Assert.IsTrue(fMB1.Multiply(0).IsZero);
         }
 
         /// <summary>

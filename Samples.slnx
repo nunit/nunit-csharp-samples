@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".github/workflows/CI.yml" />
+    <File Path=".gitignore" />
+    <File Path="BUILDING.md" />
+    <File Path="Directory.Packages.props" />
+    <File Path="LICENSE.txt" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="DataDrivenTests/DataDrivenTests.csproj" />
+  <Project Path="ExpectedExceptionExample/ExpectedExceptionExample.csproj" />
+  <Project Path="money/Money.csproj" />
+  <Project Path="syntax/AssertSyntax.csproj" />
+</Solution>
