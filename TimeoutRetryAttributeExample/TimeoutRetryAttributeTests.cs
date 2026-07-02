@@ -20,6 +20,7 @@ namespace TimeoutRetryAttributeExample
 
         // This test should execute 3 times and fail due to reached retry number limit
         [Test]
+        [Explicit("Demonstrates exhausted retries — intentionally fails after 3 attempts")]
         [MaxTime(1000)]
         [TimeoutRetry(3)]
         public void RetryIsFiredDueToTimeout()
@@ -40,6 +41,7 @@ namespace TimeoutRetryAttributeExample
 
         // This test should not retry due to failed assertion despite having reached the MaxTime threshold
         [Test]
+        [Explicit("Demonstrates that assertion failures are not retried — intentionally fails")]
         [MaxTime(1000)]
         [TimeoutRetry(10)]
         public void RetryIsNotFiredDueToFailedAssertion()
@@ -51,6 +53,7 @@ namespace TimeoutRetryAttributeExample
 
         // This test should not retry due to thrown exception despite having reached the MaxTime threshold
         [Test]
+        [Explicit("Demonstrates that exceptions are not retried — intentionally fails")]
         [MaxTime(1000)]
         [TimeoutRetry(2)]
         public void RetryIsNotFiredDueToException()

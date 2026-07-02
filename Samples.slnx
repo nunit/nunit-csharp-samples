@@ -11,6 +11,8 @@
   </Folder>
   <Project Path="DataDrivenTests/DataDrivenTests.csproj" />
   <Project Path="ExpectedExceptionExample/ExpectedExceptionExample.csproj" />
-  <Project Path="money/Money.csproj" />
-  <Project Path="syntax/AssertSyntax.csproj" />
+  <Project Path="Money/Money.csproj" />
+  <Project Path="AssertSyntax/AssertSyntax.csproj" />
+  <Project Path="TestCaseGeneration/TestCaseGeneration.csproj" />
+  <Project Path="TimeoutRetryAttributeExample/TimeoutRetryAttributeExample.csproj" Id="c9a7c840-8c27-4964-9bce-9b05f5662199" />
 </Solution>
