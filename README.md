@@ -13,7 +13,7 @@ A classic example straight from the NUnit heritage: a `Money` and `MoneyBag` imp
 
 ---
 
-### ✅ syntax
+### ✅ Syntax
 Side-by-side examples of NUnit's **constraint-based syntax** (`Assert.That`) and the **classic syntax** (`Assert.AreEqual`, `StringAssert`, `CollectionAssert`, etc.), so you can see both styles and pick what works for you.
 
 The examples are split into focused fixtures by topic:
